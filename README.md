@@ -545,7 +545,7 @@ This explanation will help guide the analysis of complaints with delayed respons
 From the dataset, untimely response was qualified with “NO” while timely response was qualified with “YES”
 
 Here’s how you I approached the question:
-1.	Identified Complaints with Untimely Response
+#####1.	Identified Complaints with Untimely Response
 
 I filtered the complaints where the Timely response column is “NO”.
 ```SQL
@@ -565,3 +565,153 @@ FROM
 | Total No of Untimely Responses |
 |--------------------------------|
 | 62,516                         |
+
+##### 2. Analyze Key Aspects of Complaints with Untimely Response
+
+I went deeper by grouping and summarizing the data based on specific columns like State, Product, and Company response to consumer to find patterns in the untimely responses. 
+- **By Product:** Determined which product categories have the most untimely responses.
+```SQL
+SELECT 
+	Product,
+COUNT 
+	(Complaint_ID) AS [Total No of Untimely Response]
+FROM 
+	Financial_Consumer_Complaints
+WHERE 
+	Timely_response = 'No'
+GROUP BY 
+	Product
+ORDER BY 
+	[Total No of Untimely Response] DESC
+```
+| Product                                                             | Total No of Untimely Responses |
+|---------------------------------------------------------------------|-------------------------------|
+| Checking or savings account                                          | 867                           |
+| Credit card or prepaid card                                         | 689                           |
+| Credit reporting, credit repair services, or other personal consumer reports | 475                           |
+| Debt collection                                                      | 173                           |
+| Money transfer, virtual currency, or money service                  | 140                           |
+| Vehicle loan or lease                                               | 33                            |
+| Mortgage                                                            | 16                            |
+| Payday loan, title loan, or personal loan                           | 10                            |
+
+The table highlights the number of untimely responses to consumer complaints across different financial products. Checking or savings accounts have the highest number of delayed responses (867), followed by credit cards or prepaid cards (689) and credit reporting services (475). Other product categories such as debt collection (173) and money transfers or virtual currencies (140) also show notable delays, while vehicle loans (33), mortgages (16), and payday loans (10) have fewer instances of untimely responses.
+
+- **By State:** Identified states with the most untimely responses.
+```SQL
+SELECT 
+	[State],
+COUNT 
+	(Complaint_ID) AS [Total No of Untimely Response]
+FROM 
+	Financial_Consumer_Complaints
+WHERE 
+	Timely_response = 'No'
+GROUP BY 
+	[State]
+ORDER BY 
+	[Total No of Untimely Response] DESC
+```
+| State | Total No of Untimely Responses |
+|-------|-------------------------------|
+| CA    | 599                           |
+| FL    | 258                           |
+| NY    | 198                           |
+| TX    | 169                           |
+| NJ    | 93                            |
+| IL    | 89                            |
+| GA    | 89                            |
+| PA    | 77                            |
+| MA    | 76                            |
+| MD    | 68                            |
+| VA    | 67                            |
+| AZ    | 64                            |
+| NC    | 60                            |
+| WA    | 54                            |
+| MI    | 43                            |
+| NV    | 41                            |
+| CT    | 36                            |
+| OR    | 32                            |
+| SC    | 30                            |
+| OH    | 30                            |
+| TN    | 26                            |
+| CO    | 21                            |
+| IN    | 17                            |
+| MO    | 15                            |
+| DC    | 13                            |
+| KS    | 13                            |
+| MN    | 12                            |
+| AR    | 11                            |
+| OK    | 11                            |
+| WI    | 10                            |
+| RI    | 10                            |
+| AL    | 9                             |
+| IA    | 8                             |
+| DE    | 7                             |
+| KY    | 7                             |
+| MS    | 6                             |
+| LA    | 5                             |
+| NH    | 4                             |
+| NM    | 4                             |
+| ID    | 3                             |
+| AK    | 3                             |
+| WV    | 3                             |
+| NE    | 3                             |
+| MT    | 3                             |
+| VT    | 2                             |
+| HI    | 2                             |
+| ND    | 1                             |
+| ME    | 1                             |
+
+The table provides a breakdown of untimely responses to consumer complaints by state. California (CA) leads with the highest number of delayed responses at 599, followed by Florida (FL) with 258 and New York (NY) with 198. Other states with notable delays include Texas (TX) (169), New Jersey (NJ) (93), and Illinois (IL) (89). States with fewer untimely responses include West Virginia (WV), Nebraska (NE), and Montana (MT) with 3 each, while North Dakota (ND) and Maine (ME) reported just 1 delayed response each.
+
+- **By Company Response:** Examine the type of company response for untimely complaints.
+```SQL
+SELECT 
+	Company_response_to_consumer,
+COUNT 
+	(Complaint_ID) AS [Total No of Untimely Response]
+FROM 
+	Financial_Consumer_Complaints
+WHERE 
+	Timely_response = 'No'
+GROUP BY 
+	Company_response_to_consumer
+ORDER BY 
+	[Total No of Untimely Response] DESC
+```
+| Company Response to Consumer         | Total No of Untimely Responses |
+|--------------------------------------|--------------------------------|
+| Closed with explanation              | 1527                           |
+| Closed with monetary relief          | 690                            |
+| Closed with non-monetary relief      | 178                            |
+| Closed                               | 8                              |
+
+The table summarizes untimely company responses to consumer complaints. The majority of delayed responses, 1,527, occurred in cases that were closed with an explanation, meaning no compensation was provided but the issue was clarified. 690 responses were delayed for cases closed with monetary relief, where financial compensation was offered. 178 cases were resolved late with non-monetary relief, involving actions like correcting errors without financial compensation. A small number, 8, were marked as simply closed without further details on the resolution.
+
+##### 3. Trends Over Time
+I also analyze if there are specific periods with more untimely responses:
+**By year:**
+```SQL
+SELECT 
+	[Year],
+COUNT
+	(Complaint_ID) AS [Total No of Untimely Response]
+FROM 
+	Financial_Consumer_Complaints
+WHERE 
+	Timely_response = 'No'
+GROUP BY 
+	[Year]
+ORDER BY 
+	[Year] ASC
+```
+| Year | Total No of Untimely Responses |
+|------|-------------------------------|
+| 2017 | 9                             |
+| 2018 | 12                            |
+| 2019 | 7                             |
+| 2020 | 62                            |
+| 2021 | 1224                          |
+| 2022 | 567                           |
+| 2023 | 522                           |
