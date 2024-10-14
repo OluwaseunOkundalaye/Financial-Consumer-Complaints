@@ -691,6 +691,7 @@ The table summarizes untimely company responses to consumer complaints. The majo
 
 ##### 3. Trends Over Time
 I also analyze if there are specific periods with more untimely responses:
+
 **By year:**
 ```SQL
 SELECT 
@@ -715,3 +716,110 @@ ORDER BY
 | 2021 | 1224                          |
 | 2022 | 567                           |
 | 2023 | 522                           |
+
+The table shows the number of untimely responses to consumer complaints over the years. There was a significant spike in delayed responses starting in 2021, with 1,224 untimely responses, compared to previous years like 2020 with only 62 delays. The numbers have since decreased but remain high, with 567 untimely responses in 2022 and 522 in 2023. Earlier years, from 2017 to 2019, had relatively few delays, ranging between 7 and 12 untimely responses annually.
+
+**By Month:**
+```SQL
+SELECT 
+	Month_Name,
+COUNT
+	(Complaint_ID) AS [Total No of Untimely Response]
+FROM 
+	Financial_Consumer_Complaints
+WHERE 
+	Timely_response = 'No'
+GROUP BY 
+	Month_Name,
+	Month_Number
+ORDER BY 
+	Month_Number ASC
+```
+
+| Month_Name | Total No of Untimely Responses |
+|------------|-------------------------------|
+| January    | 187                           |
+| February   | 164                           |
+| March      | 162                           |
+| April      | 101                           |
+| May        | 84                            |
+| June       | 422                           |
+| July       | 191                           |
+| August     | 285                           |
+| September  | 226                           |
+| October    | 247                           |
+| November   | 213                           |
+| December   | 121                           |
+
+The table highlights the distribution of untimely responses to consumer complaints across months. June stands out with the highest number of delays, at 422, followed by August with 285 and September with 226. Other months, like January (187) and July (191), also show notable delays. In contrast, April (101) and May (84) have the fewest untimely responses, with December recording 121 delays. Overall, the mid-year period seems to experience more delays compared to the start and end of the year.
+
+##### 4.	Compared Timely vs Untimely Responses
+To compare timely vs untimely responses for each product, I used the query:
+```SQL
+SELECT
+	Product,
+	SUM (
+	CASE WHEN Timely_Response = 'Yes' THEN 1 ELSE 0 END
+	) AS [Total No of Timely Response],
+	SUM (
+	CASE WHEN Timely_Response = 'No' THEN 1 ELSE 0 END
+	) AS [Total No of Untimely Response]
+FROM 
+	Financial_Consumer_Complaints
+GROUP BY 
+	Product
+ORDER BY 
+	[Total No of Untimely Response] DESC
+```
+| Product                                                                     | Total No of Timely Response | Total No of Untimely Response |
+|-----------------------------------------------------------------------------|-----------------------------|-------------------------------|
+| Checking or savings account                                                  | 23237                       | 867                           |
+| Credit card or prepaid card                                                 | 15096                       | 689                           |
+| Credit reporting, credit repair services, or other personal consumer reports | 7045                        | 475                           |
+| Debt collection                                                              | 2514                        | 173                           |
+| Money transfer, virtual currency, or money service                          | 3244                        | 140                           |
+| Vehicle loan or lease                                                       | 584                         | 33                            |
+| Mortgage                                                                     | 6539                        | 16                            |
+| Payday loan, title loan, or personal loan                                    | 321                         | 10                            |
+| Student loan                                                                 | 39                          | 0                             |
+
+The table provides a comparison of timely and untimely responses for various financial products. Checking or savings accounts received the highest number of total responses, with 23,237 handled on time and 867 delayed, indicating a small portion of delays. Similarly, credit cards or prepaid cards saw 15,096 timely responses, but 689 were untimely.
+
+Credit reporting services had 7,045 timely responses and 475 delayed, while debt collection and money transfer services had relatively fewer delays, with 173 and 140 untimely responses, respectively.
+
+On the other hand, products like vehicle loans and payday loans had significantly fewer delays, with only 33 and 10 untimely responses, respectively. Mortgages performed particularly well, with 6,539 timely responses and just 16 delayed. Student loans stood out by having no untimely responses, indicating a 100% timely resolution rate.
+
+## Recommendation
+1. Investigate Seasonal Trends and Patterns:
+- **Action:** Conduct a deeper analysis of consumer complaints during peak months, particularly July, to identify specific issues driving the increase. This could involve collecting qualitative feedback through surveys or interviews with consumers during this period.
+
+2. Enhance Consumer Communication:
+- **Action:** Improve communication strategies during high-complaint months by providing consumers with updates on common issues, resolution processes, and available resources. Consider sending targeted emails or messages to customers during known peak times.
+
+3.	Focus on High-Complaint Products:
+- **Action:** Allocate resources to address complaints related to checking or savings accounts and credit cards, as these categories generate the most complaints. Conduct a thorough review of the services associated with these products to identify pain points.
+
+4. Address Common Issues Identified in Complaints:
+- **Action:** Develop targeted strategies to resolve the most frequent issues for each product category. For example:
+- For checking/savings accounts, enhance transaction monitoring systems to quickly identify and resolve unauthorized transactions.
+- For credit cards, streamline dispute resolution processes to handle billing disputes more efficiently.
+
+5. Improve Complaint Resolution Processes:
+- **Action:** Analyze the reasons behind untimely responses to consumer complaints. Train staff on effective complaint management techniques, ensuring they are equipped to provide timely resolutions and follow-ups.
+
+6. Monitor and Evaluate Response Effectiveness:
+- **Action:** Implement a system for regularly tracking the effectiveness of complaint resolutions, both monetary and non-monetary. Establish KPIs to measure response times and consumer satisfaction post-resolution.
+
+7. Utilize Data for Strategic Decision-Making:
+- **Action:** Leverage the insights gained from consumer complaint data to inform broader business strategies and improve product offerings. For example, understanding the correlation between complaint trends and service changes can guide product development and marketing strategies.
+
+## Conclusion
+The analysis reveals significant seasonal patterns in consumer complaints, peaking in July, indicating cyclical issues in service delivery that need further attention. Complaints primarily stem from checking and savings accounts and credit cards, highlighting areas where financial institutions should focus their improvement efforts. While most complaints were resolved through explanations, many also received monetary compensation, suggesting that some issues require tangible solutions. Additionally, the increase in untimely responses since 2021 underscores the need for companies to enhance their complaint handling processes to improve consumer trust.
+
+Thank You For Reading
+
+I’m interested in a Data Analyst role in an organization where I can showcase my skills, take more responsibilities, continue to learn, an organization that I can grow with, where my work will be highly beneficial to the organization.
+
+You can reach me on oluwaseunokundalaye5@gmail.com
+
+THANK YOU
