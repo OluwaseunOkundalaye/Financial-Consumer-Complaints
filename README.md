@@ -2,17 +2,17 @@
 A SQL project set analyze Consumer complaints on financial products &amp; services for Bank of America from 2017 to 2023 and the company's response.
 
 ## Table of Content
-- Project Overview
-- Project Scope
-- Business Objective
-- Document Purpose
-- Use Case
-- Data Source
-- Dataset Overview
-- Data Cleaning and Processing
-- Data Analysis and Insight
-- Recommendation
-- Conclusion
+- [Project Overview](https://github.com/OluwaseunOkundalaye/Financial-Consumer-Complaints#project-overview)
+- [Project Scope](https://github.com/OluwaseunOkundalaye/Financial-Consumer-Complaints#project-scope)
+- [Business Objective](https://github.com/OluwaseunOkundalaye/Financial-Consumer-Complaints#business-objectives)
+- [Document Purpose](https://github.com/OluwaseunOkundalaye/Financial-Consumer-Complaints#document-purpose)
+- [Use Case](https://github.com/OluwaseunOkundalaye/Financial-Consumer-Complaints#use-case)
+- [Data Source](https://github.com/OluwaseunOkundalaye/Financial-Consumer-Complaints#data-source)
+- [Dataset Overview](https://github.com/OluwaseunOkundalaye/Financial-Consumer-Complaints#dataset-overview)
+- [Data Cleaning and Processing](https://github.com/OluwaseunOkundalaye/Financial-Consumer-Complaints#data-cleaning-and-processing)
+- [Data Analysis and Insight](https://github.com/OluwaseunOkundalaye/Financial-Consumer-Complaints#data-analysis-and-insight)
+- [Recommendation](https://github.com/OluwaseunOkundalaye/Financial-Consumer-Complaints#recommendation)
+- [Conclusion](https://github.com/OluwaseunOkundalaye/Financial-Consumer-Complaints#conclusion-3)
 
 ## Project Overview
 The project focuses on analyzing consumer complaints related to financial products and services provided by Bank of America between 2017 and 2023. The data includes the dates when complaints were submitted to the Consumer Financial Protection Bureau (CFPB), the issues raised in the complaints, and the company's responses. The analysis aims to uncover trends in complaint patterns, particularly regarding seasonality, the most commonly reported products and issues, resolution methods, and insights into complaints that were resolved untimely.
@@ -63,7 +63,7 @@ The findings from this analysis can be used in multiple business areas, includin
 The dataset utilized for this analysis was obtained from Maven Analytics [Website](https://www.mavenanalytics.io/data-playground?dataStructure=Single%20table&order=date_added%2Cdesc&search=financial), a reputable online platform known for providing data analytics training, resources, and practice datasets. Maven Analytics offers a wide range of datasets across various domains, allowing users to enhance their analytical skills through hands-on experience with real-world data.
 
 ## Dataset Overview
-The specific dataset in use contains consumer complaints related to financial products and services from Bank of America. It encompasses a comprehensive range of complaints submitted to the Consumer Financial Protection Bureau (CFPB) over a period from 2017 to 2023. This dataset serves as an invaluable resource for individuals seeking to practice data analysis techniques and to understand consumer behavior in the financial sector. It consists 62,516 rows.
+The specific dataset in use contains consumer complaints related to financial products and services from Bank of America. It encompasses a comprehensive range of complaints submitted to the Consumer Financial Protection Bureau (CFPB) over a period from 2017 to 2023. This dataset serves as an invaluable resource for individuals seeking to practice data analysis techniques and to understand consumer behavior in the financial sector. It consists of 62,516 rows.
 
 #### Content and Structure
 The dataset is structured to include key attributes such as:
